@@ -12,6 +12,7 @@ const ensureLogin = require("connect-ensure-login");
 
 
 passportRouter.get('/signup', accessController.signup)
+passportRouter.post('/signup', accessController.doSignup)
 
 passportRouter.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("passport/private", { user: req.user });
