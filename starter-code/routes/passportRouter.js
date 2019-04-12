@@ -10,9 +10,12 @@ const accessController = require('../controller/access.controller')
 
 const ensureLogin = require("connect-ensure-login");
 
-
+// Register
 passportRouter.get('/signup', accessController.signup)
 passportRouter.post('/signup', accessController.doSignup)
+// Login
+passportRouter.get('/login', accessController.login)
+// passportRouter.post('/login', accessController.doSignup)
 
 passportRouter.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("passport/private", { user: req.user });
