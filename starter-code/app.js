@@ -8,7 +8,9 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const passport = require('passport');
 
+// const session = require('./config/session.config');
 
 mongoose
   .connect('mongodb://localhost/starter-code', {useNewUrlParser: true})
@@ -19,6 +21,7 @@ mongoose
     console.error('Error connecting to mongo', err)
   });
 
+require('./config/passport.config');
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
@@ -29,6 +32,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// Authentication
+// app.use(session);//dont know what is this(?). 
+app.use(passport.initialize());
+app.use(passport.session())
 
 // Express View engine setup
 
