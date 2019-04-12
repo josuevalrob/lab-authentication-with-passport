@@ -17,7 +17,6 @@ passportRouter.post('/signup', accessController.doSignup)
 passportRouter.get('/login', accessController.login)
 passportRouter.post('/login', accessController.doLogin)
 // Private
-passportRouter.get('/profile', accessController.profile)
 
 passportRouter.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("passport/private", { user: req.user });

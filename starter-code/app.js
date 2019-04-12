@@ -10,7 +10,7 @@ const logger       = require('morgan');
 const path         = require('path');
 const passport = require('passport');
 
-// const session = require('./config/session.config');
+const session = require('./config/session.config');
 
 mongoose
   .connect('mongodb://localhost/starter-code', {useNewUrlParser: true})
@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Authentication
-// app.use(session);//dont know what is this(?). 
+app.use(session);//dont know what is this(?). 
 app.use(passport.initialize());
 app.use(passport.session())
 

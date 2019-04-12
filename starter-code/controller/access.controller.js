@@ -8,10 +8,6 @@ module.exports.signup = (req, res, next) => {
 module.exports.login = (req, res, next) => {
   res.render('passport/login');
 }
-module.exports.profile = (req, res, next) => {
-  console.log('inside profile')
-  res.render('passport/private');
-}
 //POST
 module.exports.doSignup = (req, res, next) =>{
   function renderWithErrors(errors) {
@@ -57,7 +53,7 @@ module.exports.doLogin = (req, res, next) => {
         if (error) {
           next(error)
         } else {
-          res.redirect('/profile')
+          res.redirect('/private-page')
         }
       })
     }
